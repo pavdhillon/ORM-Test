@@ -1,0 +1,28 @@
+body {
+    background-color: #F4F6F6; /* Light Gray background */
+    font-family: verdana, sans-serif;
+    color: #34495E; /* Dark Gray text */
+}
+
+h1, h2 {
+    color: #2C3E50; /* Dark Blue-Gray for headings */
+}
+
+.crud-group {
+    border: 1px solid lightgray;
+    border-radius: 25px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: white; /* Optional: White background for the groups */
+}
+
+/* ... rest of your styles.css ... */
+
+.crud-group button {
+    /* ... your button styles ... */
+    background-color: #2C3E50; /* Dark Blue-Gray for buttons */
+    color: white;
+}
