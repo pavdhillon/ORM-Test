@@ -1,0 +1,19 @@
+ "Vcs": {
+    "Github_GFT_AI_IMPACT": {
+      "Type": "Github",
+      "Config": {
+        "ServerUrl": "https://api.github.com",
+        "Repository": "pavdhillon/ORM-Test",
+        "Basebranch": "main"
+      }
+    },
+    "AzureDevOps_GFT_AI_IMPACT": {
+      "Type": "AzureDevOps",
+      "Config": {
+        "ServerUrl": "https://dev.azure.com",
+        "Organization": "gft-assets",
+        "Project": "demo-projects"
+      }
+    }
+  }
+}
