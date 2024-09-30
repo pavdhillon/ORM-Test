@@ -55,7 +55,7 @@ def get_user(user_id):
     user = User.query.filter_by(id=user_id).first()
     if user:
       return make_response(jsonify({'user': user.json()}), 200)
-    return make_response(jsonify({'message': 'user not found'}), 404)
+    return make_response(jsonify({'message': USER_NOT_FOUND_MESSAGE}), 404)
   except Exception as e:
     return make_response(jsonify({'message': f'error getting user: {e}'}), 500)
 
