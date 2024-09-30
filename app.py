@@ -54,8 +54,9 @@ def get_user(user_id):
   try:
     user = User.query.filter_by(id=user_id).first()
     if user:
+    USER_NOT_FOUND_MSG = 'user not found'
       return make_response(jsonify({'user': user.json()}), 200)
-    return make_response(jsonify({'message': 'user not found'}), 404)
+    USER_NOT_FOUND_MSG = 'user not found'
   except Exception as e:
     return make_response(jsonify({'message': f'error getting user: {e}'}), 500)
 
@@ -69,6 +70,7 @@ def update_user(user_id):
       user.username = data['username']
       user.email = data['email']
       db.session.commit()
+    USER_NOT_FOUND_MSG = 'user not found'
       return make_response(jsonify({'message': 'user updated'}), 200)
     return make_response(jsonify({'message': 'user not found'}), 404)
   except Exception as e:
@@ -82,6 +84,7 @@ def delete_user(user_id):
     if user:
       db.session.delete(user)
       db.session.commit()
+    USER_NOT_FOUND_MSG = 'user not found'
       return make_response(jsonify({'message': 'user deleted'}), 200)
     return make_response(jsonify({'message': 'user not found'}), 404)
   except Exception as e:
