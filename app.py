@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from os import environ
 from flask_cors import CORS  # Import CORS
 import pandas
+USER_NOT_FOUND_MESSAGE = 'user not found'
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_URL')
@@ -55,7 +56,7 @@ def get_user(user_id):
     user = User.query.filter_by(id=user_id).first()
     if user:
       return make_response(jsonify({'user': user.json()}), 200)
-    return make_response(jsonify({'message': 'user not found'}), 404)
+    return make_response(jsonify({'message': USER_NOT_FOUND_MESSAGE}), 404)
   except Exception as e:
     return make_response(jsonify({'message': f'error getting user: {e}'}), 500)
 
@@ -70,7 +71,7 @@ def update_user(user_id):
       user.email = data['email']
       db.session.commit()
       return make_response(jsonify({'message': 'user updated'}), 200)
-    return make_response(jsonify({'message': 'user not found'}), 404)
+    return make_response(jsonify({'message': USER_NOT_FOUND_MESSAGE}), 404)
   except Exception as e:
     return make_response(jsonify({'message': f'error updating user: {e}'}), 500)
 
@@ -83,7 +84,7 @@ def delete_user(user_id):
       db.session.delete(user)
       db.session.commit()
       return make_response(jsonify({'message': 'user deleted'}), 200)
-    return make_response(jsonify({'message': 'user not found'}), 404)
+    return make_response(jsonify({'message': USER_NOT_FOUND_MESSAGE}), 404)
   except Exception as e:
     return make_response(jsonify({'message': f'error deleting user: {e}'}), 500)
 
